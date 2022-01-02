@@ -36,6 +36,7 @@ html {
     padding: 0;
     margin: 0;
     font-family: 'Inter', sans-serif;
+    word-break: break-word;
 }
 
 body {
@@ -64,13 +65,21 @@ body > * {
     padding: 2vw 10vw;
 }
 
-body > *:last-child {
-    padding-top: none;
+nav {
+    background-color: var(--blue);
+    color: white;
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+    text-align: center;
 }
 
-h1 {
-    max-width: 100%;
-    word-break: break-all;
+nav a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+body > *:last-child {
+    padding-top: none;
 }
 
 img {
@@ -81,6 +90,11 @@ img {
 
 header {
     padding: 5rem 10vw;
+    background-color: lightgray;
+    background-image: linear-gradient(45deg, white, white, lightblue, lightgreen);
+    background-attachment: fixed;
+    background-size: 200% 200%;
+    animation: gradient 10s ease infinite;
 }
 
 
@@ -89,13 +103,9 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-footer > *:not(:last-child),
-figure > *:not(:last-child),
-section > *:not(:last-child) {
     margin-bottom: 1rem;
 }
+
 
 footer img {
     height: 5em;
@@ -104,7 +114,7 @@ footer img {
 figure {
     display: flex;
     flex-direction: column;
-    padding: 0;
+    padding: 1rem;
     color: black;
     background-color: white;
     border-radius: 1rem;
@@ -130,6 +140,11 @@ a.button:hover {
     padding: 1rem 2rem;
     animation: gradient .9s ease infinite;
     margin: 0;
+}
+
+a.button[disabled] {
+    pointer-events: none;
+    background-image: linear-gradient(-45deg, grey, lightgrey);
 }
 
 ul {
@@ -177,7 +192,30 @@ ul > a:hover > span:last-child::before {
 
 
 .logo {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 5rem auto;
     gap: 1rem;
+    align-items: center;
+}
+
+.logo > .image {
+    grid-column: 1 / 2;
+}
+
+.logo > .text {
+    grid-column: 2 / 3;
+}
+
+.dashed {
+    border: 2px dashed grey;
+}
+
+@media  (max-width: 500px) {
+    .logo {
+        display: flex;
+    }
+
+    .logo > .image {
+        display: none;
+    }
 }
